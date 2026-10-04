@@ -23,3 +23,7 @@ The `CNAME` file sets the custom domain to `tcso.world`. GitHub Pages must be en
 | CNAME | `www` | `Thiha-Lynn.github.io` |
 
 Keep the GitHub ownership-verification TXT record `_github-pages-challenge-Thiha-Lynn.tcso.world` in place. Remove only Name.com parking records for `@` and `www`; leave email/MX records alone. Do not add a wildcard record. DNS can take time to propagate; enable GitHub Pages HTTPS after GitHub detects the domain.
+
+## Support records
+
+The home-page archive links to `/support/` and three individual certificate pages. Original, unedited images are in `assets/certificates/`. Each public HTML page includes its own canonical URL, description, Open Graph and Twitter image metadata. Add new record URLs to `sitemap.xml`. The 404 page is marked `noindex`.
