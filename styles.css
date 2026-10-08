@@ -228,14 +228,14 @@ a:focus-visible, button:focus-visible { outline: 3px solid #b38642; outline-offs
 .support-heading { display: grid; grid-template-columns: 1.1fr 0.9fr; align-items: end; gap: 3rem; margin-bottom: 2.8rem; }
 .support-intro { max-width: 480px; color: #53645d; }
 .support-intro p[lang="my"] { color: var(--jade); font-family: var(--myanmar); line-height: 1.9; }
-.record-grid { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 1.3rem; }
+.record-grid { display: grid; grid-template-columns: repeat(4,minmax(0,1fr)); gap: 1rem; }
 .record-card { min-width: 0; overflow: hidden; border: 1px solid #dfd9cb; border-radius: 1rem; background: var(--white); box-shadow: 0 8px 24px rgb(8 21 33 / 0.035); }
-.record-image { position: relative; display: grid; height: 280px; padding: 1.5rem; place-items: center; background: #eae5d9; text-decoration: none; }
+.record-image { position: relative; display: grid; height: 250px; padding: 1rem 1rem 3.5rem; place-items: center; background: #eae5d9; text-decoration: none; }
 .record-image img { width: 100%; height: 100%; min-height: 0; object-fit: contain; filter: drop-shadow(0 4px 8px rgb(8 21 33 / 0.12)); }
 .record-image > span { position: absolute; right: 0.85rem; bottom: 0.85rem; display: flex; gap: 1rem; padding: 0.45rem 0.8rem; border: 1px solid #d9cba9; border-radius: 999px; background: var(--white); color: var(--navy); font-size: 0.75rem; font-weight: 650; }
-.record-copy { padding: 1.5rem; }
+.record-copy { padding: 1.2rem; }
 .record-category { margin-bottom: 0.65rem; color: #527063; font-size: 0.68rem; font-weight: 750; text-transform: uppercase; letter-spacing: 0.1em; }
-.record-copy h3 { margin-bottom: 0.8rem; font-family: var(--serif); font-size: 1.6rem; font-weight: 400; line-height: 1.15; }
+.record-copy h3 { margin-bottom: 0.8rem; font-family: var(--serif); font-size: 1.35rem; font-weight: 400; line-height: 1.25; overflow-wrap: anywhere; }
 .record-copy h3 a { text-decoration: none; }
 .record-copy h3 a:hover { text-decoration: underline; text-underline-offset: 4px; }
 .record-copy > p:not(.record-category) { min-height: 3.3em; color: #59655e; font-size: 0.92rem; }
@@ -273,6 +273,10 @@ a:focus-visible, button:focus-visible { outline: 3px solid #b38642; outline-offs
 .footer-social { flex-wrap: wrap; }
 .copyright { max-width: none; }
 
+@media (min-width: 721px) and (max-width: 1023px) {
+    .record-grid { grid-template-columns: repeat(2,minmax(0,1fr)); }
+}
+
 /* The expanded navigation also needs room on small laptops and tablets. */
 @media (max-width: 980px) {
     .header-inner { min-height: 72px; gap: 1rem; }
@@ -283,7 +287,7 @@ a:focus-visible, button:focus-visible { outline: 3px solid #b38642; outline-offs
     .primary-nav > a { padding: 0.9rem 0; border-bottom: 1px solid rgb(255 255 255 / 0.075); font-size: 0.94rem; }
     .primary-nav .nav-cta { justify-content: center; margin-top: 0.85rem; padding: 0.78rem 1rem; border: 1px solid rgb(213 173 107 / 0.6); }
     .record-grid { gap: 0.85rem; }
-    .record-image { height: 250px; padding: 1rem; }
+    .record-image { height: 250px; padding: 1rem 1rem 3.5rem; }
     .record-copy { padding: 1.2rem; }
     .record-copy h3 { font-size: 1.4rem; }
 }
@@ -291,7 +295,7 @@ a:focus-visible, button:focus-visible { outline: 3px solid #b38642; outline-offs
     .support-heading, .record-detail, .record-grid { grid-template-columns: minmax(0,1fr); }
     .support-heading { gap: 1.4rem; margin-bottom: 2rem; }
     .record-grid { gap: 1.4rem; }
-    .record-image { height: 290px; padding: 1.3rem; }
+    .record-image { height: 290px; padding: 1.3rem 1.3rem 4rem; }
     .record-copy > p:not(.record-category) { min-height: 0; }
     .record-copy h3 { font-size: 1.65rem; }
     .records-hero { padding-bottom: 3rem; }
