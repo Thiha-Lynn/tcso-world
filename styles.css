@@ -228,7 +228,7 @@ a:focus-visible, button:focus-visible { outline: 3px solid #b38642; outline-offs
 .support-heading { display: grid; grid-template-columns: 1.1fr 0.9fr; align-items: end; gap: 3rem; margin-bottom: 2.8rem; }
 .support-intro { max-width: 480px; color: #53645d; }
 .support-intro p[lang="my"] { color: var(--jade); font-family: var(--myanmar); line-height: 1.9; }
-.record-grid { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: 1.3rem; }
+.record-grid { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 1.3rem; }
 .record-card { min-width: 0; overflow: hidden; border: 1px solid #dfd9cb; border-radius: 1rem; background: var(--white); box-shadow: 0 8px 24px rgb(8 21 33 / 0.035); }
 .record-image { position: relative; display: grid; height: 280px; padding: 1.5rem; place-items: center; background: #eae5d9; text-decoration: none; }
 .record-image img { width: 100%; height: 100%; min-height: 0; object-fit: contain; filter: drop-shadow(0 4px 8px rgb(8 21 33 / 0.12)); }

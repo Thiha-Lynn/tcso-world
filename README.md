@@ -26,4 +26,6 @@ Keep the GitHub ownership-verification TXT record `_github-pages-challenge-Thiha
 
 ## Support records
 
-The home-page archive links to `/support/` and three individual certificate pages. Original, unedited images are in `assets/certificates/`. Each public HTML page includes its own canonical URL, description, Open Graph and Twitter image metadata. Add new record URLs to `sitemap.xml`. The 404 page is marked `noindex`.
+The home-page archive links to `/support/` and four individual certificate pages. Original, unedited images are in `assets/certificates/`. Each public HTML page includes its own canonical URL, description, Open Graph and Twitter image metadata. Add new record URLs to `sitemap.xml`. The 404 page is marked `noindex`.
+
+Healthcare record `/support/healthcare/`: certificate TL-26/1058, dated 16 September 2026, acknowledging MMK 700,000 for hospital healthcare services. The supplied image is preserved unedited.
