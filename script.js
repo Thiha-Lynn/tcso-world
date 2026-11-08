@@ -156,7 +156,7 @@ if (membershipForm) {
         payment.querySelectorAll('select').forEach(field => { field.disabled = !paid; });
         document.querySelector('#selection-summary').textContent = paid
             ? 'Paid Supporter · US$30 one-time membership fee. Includes all free benefits, 12 months of LinkedIn Premium Career and eligible partner offers. One-time community membership. Nothing charged now.'
-            : 'Free Member · US$0 membership fee. Google AI Plus (12 months), Super Duolingo (12 months), Apple Music (6 months) and community resources. Activation subject to confirmation.';
+            : 'Free Member · US$0 membership fee. Google AI Pro (12 months), Super Duolingo (12 months), Apple Music (6 months) and community resources. Activation subject to confirmation.';
     };
     const invalidate = () => {
         result.hidden = true;
@@ -204,7 +204,7 @@ if (membershipForm) {
             `Country / နိုင်ငံ: ${payload.country}`,
             `Follow-up email: ${fields.contact} (verified)`,
             `Country coordinator: ${fields.coordinator || 'Not specified'}`,
-            'Benefits requested: Google AI Plus 2 TB (12 months), Super Duolingo (12 months), Apple Music Individual (6 months), community support.',
+            'Benefits requested: Google AI Pro 5 TB (12 months), Super Duolingo (12 months), Apple Music Individual (6 months), community support.',
             ...(paid ? [
                 'Additional benefits: LinkedIn Premium Career (12 months) and guidance for eligible partner perks.',
                 `Preferred currency: ${fields.currency}`,

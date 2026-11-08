@@ -720,3 +720,12 @@ button:disabled { opacity: .65; cursor: wait; }
 .duration-badge { display:block; width:fit-content; background:#e7eddf; color:#234635; border-radius:6px; padding:.3rem .6rem; margin:.15rem 0 .6rem; font-size:.85rem; }
 .offer-story { max-width:880px; margin:0 auto 2rem; padding:1.5rem; background:#fffaf0; border:1px solid #d6bf83; border-radius:14px; color:#254334; line-height:1.9; }
 .offer-story h3 { margin:0; font-size:1.5rem; line-height:1.4; }
+
+/* Product identity: stable icon dimensions and comfortable bilingual spacing. */
+.plan-card { background-image: none; background-color: #fffdf7; }
+.product-heading { display:flex; align-items:center; gap:.75rem; min-height:2.75rem; }
+.product-icon { flex:0 0 2.25rem; width:2.25rem; height:2.25rem; object-fit:contain; padding:.25rem; background:white; border:1px solid #e6e6dc; border-radius:.55rem; box-sizing:content-box; }
+.benefit-list li .product-heading span { color:inherit; font-size:1.04rem; font-weight:700; line-height:1.45; }
+.benefit-list li { padding:1.25rem 0; gap:.65rem; }
+.benefit-list li span[lang="my"] { display:block; margin-top:.35rem; line-height:1.9; }
+.partner-detail-list .product-heading span { font-weight:700; }
