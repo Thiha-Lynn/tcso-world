@@ -30,7 +30,7 @@ Validation: `python3 -m unittest discover -s backend -v` exercises actual HTTP r
 
 ## Email verification
 
-POST `/tcso-api/otp/request` sends a six-digit code via Brevo; POST `/tcso-api/otp/verify` exchanges it for an email-bound token required by `/tcso-api/applications`. Codes expire after 10 minutes and five failed guesses. Tokens expire after 30 minutes and can submit one application (idempotent retries allowed). Codes/tokens are hashed at rest. Verification records are removed within 24 hours by daily maintenance (request-time cleanup also runs).
+POST `/tcso-api/otp/request` sends a six-digit code via Brevo; POST `/tcso-api/otp/verify` exchanges it for an email-bound token required by `/tcso-api/applications`. Codes expire after 10 minutes and five failed guesses. Tokens expire after 30 minutes and can submit one application (idempotent retries allowed). Codes/tokens are hashed at rest. Verification records older than 24 hours are removed by daily maintenance, within 48 hours of creation (request-time cleanup also runs).
 
 Limits: one request per minute, five per hour per email or daily hashed IP, and 200 requests per rolling day for this service. Brevo's shared account quota also applies. SMTP uses STARTTLS on port 587. Secrets live only in root-owned mode-0600 `/etc/tcso-intake.env`, loaded by systemd; never commit them. Required variables: `SMTP_HOST`, `SMTP_PORT`, `SMTP_USERNAME`, `SMTP_PASSWORD`, `SMTP_FROM`.
 
