@@ -4,7 +4,7 @@ A bilingual, static landing page for the Third-Country Supporters Organization. 
 
 ## Update the page
 
-Edit `index.html` and `styles.css`. Keep social share metadata and image dimensions together in the document head. The site uses the supplied TCSO identity artwork from `assets/` and does not depend on a build service or external fonts.
+Edit `index.html` and `styles.css`. Keep social share metadata and image dimensions together in the document head. The site uses the supplied TCSO identity artwork from `assets/` and does not depend on a build service or external fonts. The homepage globe is a locally hosted Three.js scene (`assets/globe.js` and `assets/vendor/`) with a NASA Blue Marble Earth texture (`assets/earth-blue-marble.jpg`, sourced from [NASA Visible Earth](https://visibleearth.nasa.gov/view.php?id=57752)). Its network arcs are illustrative routes; no membership locations or live member data are shown.
 
 ## Membership intake
 

@@ -9,7 +9,7 @@
     <meta name="robots" content="index, follow, max-image-preview:large">
     <link rel="canonical" href="https://tcso.world/">
     <link rel="icon" type="image/jpeg" href="/assets/tcso-emblem.jpg">
-    <link rel="preload" as="image" href="/assets/tcso-banner.jpg" fetchpriority="high">
+    <link rel="preload" as="image" href="/assets/earth-blue-marble.jpg" fetchpriority="high">
 
     <meta property="og:type" content="website">
     <meta property="og:site_name" content="Third-Country Supporters Organization">
@@ -43,8 +43,12 @@
       "sameAs": ["https://www.facebook.com/TCSODL"]
     }
     </script>
-    <link rel="stylesheet" href="/styles.css?v=20261108-membership-v3">
+    <link rel="stylesheet" href="/styles.css?v=20261108-globe-v2">
+    <script type="importmap">
+      {"imports":{"three":"/assets/vendor/three.module.js"}}
+    </script>
     <script src="/script.js?v=20261108-membership-v3" defer></script>
+    <script type="module" src="/assets/globe.js?v=20261108-globe-v2"></script>
 <noscript><style>.header-inner{flex-wrap:wrap;padding-block:1rem}.nav-toggle{display:none}.primary-nav{position:static;display:flex;flex-wrap:wrap;width:100%;box-shadow:none}</style></noscript>
 </head>
 <body>
@@ -85,15 +89,19 @@
                     <div class="hero-signature"><span class="signature-rule"></span><span>Bridging borders. Building futures. Together.</span></div>
                 </div>
 
-                <div class="hero-visual" aria-label="Myanmar homeland artwork">
-                    <img class="hero-art" src="/assets/tcso-banner.jpg" alt="Illustrated Myanmar map, golden dawn and a bridge spanning distant horizons" width="1280" height="487" fetchpriority="high">
-                    <div class="hero-visual-shade" aria-hidden="true"></div>
+                <div class="hero-visual hero-visual--globe" data-tcso-globe role="group" aria-label="Interactive 3D Earth illustration showing symbolic connections from Myanmar across the world">
+                    <div class="globe-fallback" role="img" aria-label="Illustrative view of Earth with Myanmar at the center"></div>
+                    <div class="globe-canvas" data-globe-canvas></div>
+                    <div class="globe-topline"><span class="globe-live-dot" aria-hidden="true"></span> MYANMAR · CONNECTED ACROSS BORDERS</div>
                     <div class="hero-visual-caption">
                         <span class="caption-mark" aria-hidden="true">T</span>
-                        <span><strong>One home in our hearts.</strong><small>Many voices. One shared hope.</small></span>
+                        <span><strong>Many voices. One shared hope.</strong><small>Bridging borders. Building futures.</small></span>
                     </div>
-                    <span class="hero-orbit hero-orbit--one" aria-hidden="true"></span>
-                    <span class="hero-orbit hero-orbit--two" aria-hidden="true"></span>
+                    <div class="globe-controls">
+                        <span class="globe-hint">Drag to turn · scroll or pinch to zoom</span>
+                        <button class="globe-toggle" type="button" aria-pressed="false" hidden>Pause rotation</button>
+                    </div>
+                    <p class="globe-disclosure">Illustrative connection routes — no live member locations shown. Earth texture: <a href="https://visibleearth.nasa.gov/view.php?id=57752" target="_blank" rel="noopener noreferrer">NASA Blue Marble</a>.<span lang="my">ပြသထားသည့် ချိတ်ဆက်လမ်းကြောင်းများသည် ဥပမာသဘောသာ ဖြစ်ပြီး အဖွဲ့ဝင်များ၏ တည်နေရာကို တိုက်ရိုက်မပြသပါ။</span></p>
                 </div>
             </div>
             <div class="hero-ground" aria-hidden="true"></div>
@@ -104,9 +112,15 @@
                 <div>
                     <p class="eyebrow">First membership intake</p>
                     <h2 id="membership-banner-title">A place to connect,<br><em>learn and grow together.</em></h2>
-                    <p lang="my">မြန်မာနိုင်ငံပြင်ပမှာ နေထိုင်နေသူတိုင်း TCSO အဖွဲ့ဝင်အဖြစ် လျှောက်ထားနိုင်ပါပြီ။</p>
+                    <p lang="my">မြန်မာနိုင်ငံပြင်ပမှာ နေထိုင်နေသူတိုင်း TCSO အဖွဲ့ဝင်အဖြစ် လျှောက်ထားနိုင်ပါပြီ။ အခမဲ့အဖွဲ့ဝင် US$0 · Supporter အဖွဲ့ဝင် US$30။</p>
+                    <div class="membership-banner-plans" aria-label="Membership plan fees">
+                        <span><strong>FREE MEMBER</strong><b>US$0</b></span>
+                        <span><strong>SUPPORTER MEMBER</strong><b>US$30</b></span>
+                        <small>Open to people living outside Myanmar · No age limit</small>
+                    </div>
+                    <p class="membership-banner-value">US$30 supporter fee · listed subscriptions have an estimated U.S. retail comparison of <strong>~US$515.69*</strong><br><span lang="my">US$30 ဖြင့် supporter အဖွဲ့ဝင်နိုင်ပြီး ဖော်ပြထားသော subscription များ၏ အမေရိကန်ဈေးကွက်တန်ဖိုးနှိုင်းယှဉ်ချက်မှာ US$515.69 ဝန်းကျင်ဖြစ်ပါသည်။</span><small>*Retail comparison, not the TCSO fee; conditional partner offers are separate.</small></p>
                 </div>
-                <a class="button button--gold" href="/membership/">Explore membership & apply <span aria-hidden="true">↗</span></a>
+                <a class="button button--gold" href="/membership/">Compare benefits & apply <span aria-hidden="true">↗</span></a>
             </div>
         </section>
 
