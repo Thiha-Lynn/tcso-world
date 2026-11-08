@@ -1,0 +1,12 @@
+[Unit]
+Description=Expire TCSO intake records and update private backup
+[Service]
+Type=oneshot
+User=tcso-intake
+Group=tcso-intake
+ExecStart=/usr/bin/python3 /opt/tcso-intake/maintenance.py
+UMask=0077
+ProtectHome=true
+ProtectSystem=strict
+ReadWritePaths=/var/lib/tcso-intake
+NoNewPrivileges=true

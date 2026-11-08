@@ -612,3 +612,61 @@ a:focus-visible, button:focus-visible { outline: 3px solid #b38642; outline-offs
 @media (prefers-reduced-motion: reduce) {
     .globe-fallback { transition: none; }
 }
+
+/* Membership clarity and accessible intake, November 2026. */
+[hidden] { display: none !important; }
+.button, .nav-cta { min-height: 48px; align-items: center; justify-content: center; text-align: center; line-height: 1.45; gap: .75rem; }
+.button > span[aria-hidden], .nav-cta > span { flex: 0 0 auto; }
+.button { white-space: normal; }
+.container > *, .plan-grid > *, .application-grid > * { min-width: 0; }
+.plan-topline { align-items: flex-start; flex-direction: column; gap: .5rem; }
+.plan-price, .plan-card--paid .plan-price { padding: 0; background: transparent; color: #142d38; font-size: clamp(3.7rem, 6vw, 5rem); font-weight: 800; line-height: 1.15; letter-spacing: -.055em; }
+.plan-price small { font-size: 1rem; letter-spacing: .08em; vertical-align: middle; }
+.fee-period { margin: .5rem 0; color: #4f5b51; font-size: .83rem; line-height: 1.65; }
+.benefit-list li { display: grid; grid-template-columns: 1fr; gap: .3rem; align-items: start; padding: 1rem 0; }
+.benefit-list li span { text-align: left; color: #4f5e55; line-height: 1.65; font-size: .86rem; }
+.benefit-list li strong { font-size: 1rem; }
+.benefit-extra strong { color: #785112 !important; }
+.plan-value { margin-top: .5rem; }
+.partner-offers ul { grid-template-columns: 1fr; font-size: .86rem; gap: .6rem; }
+.partner-offers h4 { font-size: .95rem; line-height: 1.6; }
+.plan-card .plan-cta { margin-top: auto; }
+.application-grid { grid-template-columns: minmax(0, .8fr) minmax(0, 1.2fr); align-items: start; }
+.application-intro { position: static; }
+.apply-steps-list { padding-left: 1.25rem; color: #f2dba7; line-height: 2; }
+.plan-picker { margin: .6rem 0 0; padding: 0; border: 0; min-width: 0; }
+.plan-picker legend { font-weight: 700; margin-bottom: .75rem; }
+.plan-picker legend small { display: block; font-weight: 400; margin-top: .3rem; }
+.plan-picker label { display: flex; align-items: center; gap: .75rem; padding: 1rem; margin: 0 0 .65rem; border: 1px solid #c9d0c9; border-radius: .65rem; cursor: pointer; background: #fff; }
+.plan-picker label:has(input:checked) { border-color: #96713b; background: #fbf1d8; box-shadow: inset 0 0 0 1px #96713b; }
+.plan-picker label span { flex: 1; min-width: 0; }
+.plan-picker label small { display: block; font-size: .78rem; line-height: 1.6; margin-top: .25rem; color: #526258; }
+.plan-picker label b { white-space: nowrap; font-size: 1.25rem; color: #172e38; }
+#membership-form input[type="radio"], #membership-form input[type="checkbox"], .consent-label input { width: 19px; height: 19px; min-height: 19px; flex-shrink: 0; accent-color: #244636; }
+#membership-form select { appearance: none; min-height: 52px; padding-right: 2.5rem; background: #fff url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 16 16'%3E%3Cpath d='m4 6 4 4 4-4' fill='none' stroke='%23334b40' stroke-width='2'/%3E%3C/svg%3E") no-repeat right 1rem center; font-size: 16px; }
+#membership-form input { font-size: 16px; }
+.selection-summary { padding: .85rem 1rem; margin: 0 0 .5rem; background: #edf2ec; color: #254b37; border-radius: .5rem; font-size: .9rem; line-height: 1.65; }
+.spam-trap { position: absolute !important; left: -10000px; width: 1px; height: 1px; overflow: hidden; }
+.consent-label { display: flex; align-items: flex-start; gap: .7rem; margin: 1rem 0; font-size: .85rem; line-height: 1.7; }
+#submit-application { width: 100%; }
+#submission-status { line-height: 1.7; font-weight: 650; color: #254b37; overflow-wrap: anywhere; }
+#submission-status.is-error { color: #9a302a; }
+button:disabled { opacity: .65; cursor: wait; }
+.coordinator-field legend { max-width: 100%; padding: 0 .35rem; line-height: 1.7; }
+.membership-banner-plans > span { padding: .75rem 1rem; font-size: .8rem; }
+.membership-banner-plans > span b { font-size: 1.65rem; }
+@media (max-width: 980px) { .application-grid { grid-template-columns: 1fr; } }
+@media (max-width: 540px) {
+ .plan-picker label { padding: .85rem .65rem; gap: .5rem; }
+ .plan-picker label b { font-size: 1.05rem; }
+ .plan-card h3 { font-size: 1.9rem; }
+ .value-breakdown-heading { align-items: flex-start; flex-direction: column; }
+ .value-basis { text-align: left; }
+ .button { padding-inline: 1.15rem; }
+}
+.membership-banner-plans b small { display: block; font-size: .7rem; letter-spacing: .04em; }
+@media (min-width: 981px) {
+ .plan-burmese { min-height: 3.8em; }
+ .plan-description { min-height: 3.4em; }
+}
+#application-result { scroll-margin-top: 110px; }

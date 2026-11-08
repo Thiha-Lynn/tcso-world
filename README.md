@@ -8,7 +8,9 @@ Edit `index.html` and `styles.css`. Keep social share metadata and image dimensi
 
 ## Membership intake
 
-The public bilingual membership page is at `/membership/`. It describes eligibility, the free and paid plans, conditional LinkedIn Premium partner offers, and the first intake. Its application form runs entirely in the visitor's browser and does not save or transmit entries. It prepares a message for the applicant to review, copy and send to the existing TCSO Messenger contact. If TCSO connects a form service later, update the privacy notice and intake flow before collecting entries. The editable bilingual launch copy is in `membership/PROMO-POST.md`; the social artwork source and share image are in `assets/tcso-membership-social-card.svg` and `.jpg`. The warm handmade-paper texture in `assets/sittaung-paper-texture.jpg` is an AI-generated visual inspired by Sittaung paper, not an archival or authenticated sample.
+The bilingual `/membership/` page offers free membership (US$0) and one-time community supporter membership (US$30). Product access periods are separate from community membership. Future monthly/premium offers are optional. Both plan cards list shared benefits; paid extras and provider eligibility are explicit.
+
+The form previews locally, then submits only with consent to `https://myotaw.com/tcso-api/applications`. The private AWS service returns a reference. Applicants can copy a bilingual message and open [TCSO Messenger](https://m.me/TCSODL), paste and send. Opening Messenger does not auto-send or prefill a message. No Meta Page token or webhook is configured; automatic Page inbox delivery is not enabled. See `backend/README.md` for operations, retention and deployment.
 
 ## GitHub Pages and DNS
 

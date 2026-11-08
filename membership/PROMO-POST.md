@@ -17,18 +17,17 @@ TCSO is welcoming members for its first membership intake. Connect with Myanmar 
 
 **TCSO membership fee: US$0.** Optional U.S. product-price comparison: about US$275.81* (this is not a TCSO charge).
 
-### Paid Supporter Member — US$30 membership fee
+### Paid Supporter Member — US$30 one-time community membership fee
 
 Includes everything in Free, plus:
 
 - LinkedIn Premium Career (12 months; U.S. list-price benchmark: US$239.88)
 - Eligible LinkedIn Premium partner offers shown in the member’s account may include YouTube Premium Lite (3 months), Lovable (1 year + 300 one-time credits), Granola AI (6 months), Headway Premium (4 months), Headspace (4 months), Notion Business (3 months) and NordVPN Basic (3 months).
 
-**TCSO membership fee: US$30.** The estimated U.S. retail comparison for the main listed subscriptions is about US$515.69* (not a TCSO charge). Eligible partner offers may provide additional trial access; they are not included in that comparison.
+**TCSO membership fee: US$30, one time only.** The estimated U.S. retail comparison for the main listed subscriptions is about US$515.69* (not a TCSO charge). Eligible partner offers may provide additional trial access; they are not included in that comparison.
 
-**Possible LinkedIn partner-offer comparisons (not guaranteed):** YouTube Premium Lite, 3 months (~US$26.97); Lovable, 300 credits (variable value, no fixed cash estimate); Granola AI, 6 months (up to US$84); Headway, 4 months (up to US$51.96); Headspace, 4 months (up to US$51.96); Notion, 3 months (up to US$60); and NordVPN Basic, 3 months (up to US$44.97). The six priced examples total up to **US$319.86**, plus Lovable credits with no fixed cash value. If all listed offers are available and redeemed, the combined retail-price comparison could reach **up to US$835.55** (US$515.69 baseline + US$319.86 partner examples). These are conditional illustrations, not guaranteed savings or TCSO’s actual cost. Eligibility, offer periods and terms vary by account and region.
 
-**Payment options:** Request the final amount in USD, SGD, THB, JPY or EUR, or ask TCSO which cryptocurrency and payment routes are currently supported. TCSO will confirm the membership period, converted amount, exchange rate and payment instructions before you decide to pay. No payment is due with the application. Never send money or crypto to an unverified address.
+**Payment options:** Request the final amount in USD, SGD, THB, JPY or EUR, or ask TCSO which cryptocurrency and payment routes are currently supported. TCSO will confirm the one-time converted amount, exchange rate and payment instructions before you decide to pay. No payment is due with the application. Never send money or crypto to an unverified address.
 
 **Apply:**
 
@@ -69,9 +68,8 @@ TCSO ၏ ပထမဆုံးအကြိမ် အဖွဲ့ဝင်လက�
 - LinkedIn Premium Career (၁၂ လ၊ အမေရိကန်ဈေးကွက်စာရင်းတန်ဖိုး US$239.88 ဝန်းကျင်)
 - LinkedIn Premium အကောင့်တွင် ရရှိနိုင်ပြီး အရည်အချင်းပြည့်မီပါက YouTube Premium Lite (၃ လ)၊ Lovable (၁ နှစ်နှင့် တစ်ကြိမ်သုံး credit ၃၀၀)၊ Granola AI (၆ လ)၊ Headway Premium (၄ လ)၊ Headspace (၄ လ)၊ Notion Business (၃ လ) နှင့် NordVPN Basic (၃ လ) တို့ကို ရယူနိုင်ပါသည်။
 
-**TCSO မန်ဘာကြေး US$30 ဖြစ်ပါသည်။** ဝန်ဆောင်မှုများ၏ အမေရိကန်ဈေးကွက် လက်လီဈေးနှုန်းနှိုင်းယှဉ်ချက်မှာ US$515.69 ဝန်းကျင်* ဖြစ်ပါသည်။ ၎င်းသည် TCSO သို့ ပေးရမည့်ငွေ မဟုတ်ပါ။ အရည်အချင်းပြည့်မီသော partner trial များကို ဤနှိုင်းယှဉ်ချက်ထဲ မထည့်ထားပါ။
+**TCSO မန်ဘာကြေး US$30 တစ်ကြိမ်တည်း ဖြစ်ပါသည်။** ဝန်ဆောင်မှုများ၏ အမေရိကန်ဈေးကွက် လက်လီဈေးနှုန်းနှိုင်းယှဉ်ချက်မှာ US$515.69 ဝန်းကျင်* ဖြစ်ပါသည်။ ၎င်းသည် TCSO သို့ ပေးရမည့်ငွေ မဟုတ်ပါ။ အရည်အချင်းပြည့်မီသော partner trial များကို ဤနှိုင်းယှဉ်ချက်ထဲ မထည့်ထားပါ။
 
-**ရရှိနိုင်ပါက LinkedIn partner offer များ၏ လက်လီတန်ဖိုးနှိုင်းယှဉ်ချက် (အာမခံချက်မဟုတ်ပါ):** YouTube Premium Lite ၃ လ (~US$26.97)၊ Lovable credit ၃၀၀ (အသုံးပြုပုံအလိုက် တန်ဖိုးကွာခြားပြီး ငွေသားတန်ဖိုး အတိအကျမရှိ)၊ Granola AI ၆ လ (US$84 အထိ)၊ Headway ၄ လ (US$51.96 အထိ)၊ Headspace ၄ လ (US$51.96 အထိ)၊ Notion ၃ လ (US$60 အထိ) နှင့် NordVPN Basic ၃ လ (US$44.97 အထိ)။ ဈေးသတ်မှတ်နိုင်သော offer ၆ ခု၏ စုစုပေါင်းသည် US$319.86 အထိဖြစ်ပြီး Lovable credit များတွင် သတ်မှတ်ငွေသားတန်ဖိုး မရှိပါ။ ဖော်ပြထားသော offer အားလုံးကို ရယူနိုင်ပြီး အသုံးပြုနိုင်ပါက စုစုပေါင်းလက်လီဈေးနှုန်းနှိုင်းယှဉ်ချက်မှာ US$835.55 အထိ (US$515.69 အခြေခံတန်ဖိုး + US$319.86 partner offer ဥပမာများ) ဖြစ်နိုင်ပါသည်။ ၎င်းသည် အခြေအနေပေါ်မူတည်သော ခန့်မှန်းချက်သာဖြစ်ပြီး အာမခံထားသော ချွေတာငွေ သို့မဟုတ် TCSO ၏ အမှန်တကယ်ကုန်ကျငွေ မဟုတ်ပါ။ နိုင်ငံ၊ အကောင့်နှင့် offer စည်းကမ်းချက်များအလိုက် ကွာခြားနိုင်ပါသည်.
 
 **ပေးချေမှုရွေးချယ်စရာများ:** USD, SGD, THB, JPY သို့မဟုတ် EUR ဖြင့် ပေးချေလိုကြောင်း ရွေးချယ်နိုင်ပါသည်။ Cryptocurrency သို့မဟုတ် အခြားပေးချေမှုနည်းလမ်းကို အသုံးပြုနိုင်/မနိုင်ကို TCSO ထံ မေးမြန်းနိုင်ပါသည်။ ငွေပေးချေရန် မဆုံးဖြတ်မီ အဖွဲ့ဝင်ကာလ၊ လဲလှယ်ငွေပမာဏ၊ ငွေလဲနှုန်းနှင့် အသုံးပြုနိုင်သော ပေးချေမှုနည်းလမ်းတို့ကို TCSO မှ အတည်ပြုပေးပါမည်။ လျှောက်လွှာတင်ချိန်တွင် ငွေပေးချေရန် မလိုပါ။ အတည်မပြုရသေးသော ဘဏ်အကောင့် သို့မဟုတ် crypto address များသို့ ငွေမပို့ပါနှင့်။
 
