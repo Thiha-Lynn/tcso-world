@@ -6,6 +6,10 @@ A bilingual, static landing page for the Third-Country Supporters Organization. 
 
 Edit `index.html` and `styles.css`. Keep social share metadata and image dimensions together in the document head. The site uses the supplied TCSO identity artwork from `assets/` and does not depend on a build service or external fonts.
 
+## Membership intake
+
+The public bilingual membership page is at `/membership/`. It describes eligibility, the free and paid plans, conditional LinkedIn Premium partner offers, and the first intake. Its application form runs entirely in the visitor's browser and does not save or transmit entries. It prepares a message for the applicant to review, copy and send to the existing TCSO Messenger contact. If TCSO connects a form service later, update the privacy notice and intake flow before collecting entries. The editable bilingual launch copy is in `membership/PROMO-POST.md`; the social artwork source and share image are in `assets/tcso-membership-social-card.svg` and `.jpg`. The warm handmade-paper texture in `assets/sittaung-paper-texture.jpg` is an AI-generated visual inspired by Sittaung paper, not an archival or authenticated sample.
+
 ## GitHub Pages and DNS
 
 The `CNAME` file sets the custom domain to `tcso.world`. GitHub Pages must be enabled for the repository with the `main` branch root as the publishing source. At Name.com, set the apex records to GitHub Pages and create the `www` CNAME:
