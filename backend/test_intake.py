@@ -11,7 +11,7 @@ os.environ['TCSO_STATE'] = tempfile.mkdtemp(prefix='tcso-test-')
 import intake
 import email_verification as verification
 OUTBOX = {}
-verification.send_code = lambda email, code: OUTBOX.update({email: code})
+verification.send_code = lambda email, code, challenge=None: OUTBOX.update({email: code})
 
 class IntakeTests(unittest.TestCase):
     @classmethod

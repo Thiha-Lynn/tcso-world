@@ -8,6 +8,8 @@ import smtplib
 import ssl
 import time
 import uuid
+from urllib.parse import urlencode
+from html import escape
 from email.message import EmailMessage
 
 class VerificationError(Exception):
@@ -23,9 +25,10 @@ def normalize_email(value):
 def schema(db):
     db.execute('CREATE TABLE IF NOT EXISTS email_codes (id TEXT PRIMARY KEY, email TEXT, digest TEXT, salt TEXT, created INTEGER, attempts INTEGER DEFAULT 0, token_hash TEXT, verified INTEGER, used_request TEXT, sent INTEGER DEFAULT 0, client TEXT)')
 
-def render_code_html(code):
+def render_code_html(code, resume_url="https://tcso.world/membership/#apply"):
     if not re.fullmatch(r'[0-9]{6}', code):
         raise ValueError('A six-digit code is required')
+    resume_url = escape(resume_url, quote=True)
     return f'''<!doctype html>
 <html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Your TCSO verification code</title></head>
 <body style="margin:0;padding:0;background:#eef0eb;color:#18362c;font-family:Arial,Helvetica,sans-serif;">
@@ -35,21 +38,22 @@ def render_code_html(code):
 <tr><td style="padding:28px 30px;background:#0c202d;border-bottom:3px solid #d6b771;">
 <table role="presentation" cellspacing="0" cellpadding="0"><tr><td width="66"><img src="https://tcso.world/assets/tcso-emblem.jpg" alt="TCSO emblem" width="52" height="52" style="display:block;border-radius:50%;border:1px solid #d6b771;"></td><td style="color:#f6e2ae;font-size:26px;letter-spacing:4px;">TCSO<br><span style="font-size:10px;letter-spacing:1px;color:#dce4e6;">THIRD-COUNTRY SUPPORTERS ORGANIZATION</span></td></tr></table>
 </td></tr>
-<tr><td style="padding:32px 30px 12px;"><p style="margin:0 0 14px;font-size:11px;font-weight:bold;letter-spacing:2px;color:#85662f;">YOUR COMMUNITY STARTS HERE</p><h1 style="margin:0 0 16px;font-family:Georgia,serif;font-size:32px;line-height:1.25;color:#0c202d;">One small step.<br>A shared future.</h1><p style="margin:0;font-size:16px;line-height:1.8;">Use this code in your open TCSO application to verify your email.</p><p lang="my" style="margin:8px 0 18px;font-size:14px;line-height:1.9;">အီးမေးလ်အတည်ပြုရန် အောက်ပါကုဒ်ကို ဖွင့်ထားသော TCSO လျှောက်လွှာတွင် ထည့်ပါ။</p></td></tr>
-<tr><td style="padding:0 30px 24px;"><table role="presentation" width="100%" cellspacing="0" cellpadding="0" style="background:#f5e7bd;border:1px solid #d6b771;border-radius:12px;"><tr><td align="center" style="padding:24px 8px;"><p style="margin:0 0 10px;font-size:11px;letter-spacing:2px;color:#624b22;">YOUR VERIFICATION CODE</p><div style="font-family:Consolas,Monaco,monospace;font-size:36px;letter-spacing:6px;font-weight:bold;color:#0c202d;white-space:nowrap;">{code}</div><p style="margin:12px 0 0;font-size:13px;color:#624b22;">Valid for 10 minutes · Use once</p></td></tr></table></td></tr>
-<tr><td style="padding:0 30px 28px;"><p style="font-size:14px;line-height:1.8;margin:0 0 16px;"><strong>1.</strong> Return to your open application.<br><strong>2.</strong> Enter the six digits and select Verify code.<br><strong>3.</strong> Review your details, submit, then continue in Messenger.</p><p style="font-size:13px;line-height:1.8;margin:0 0 20px;">Keep your application tab open. If you closed it, start again and request a new code.</p><a href="https://tcso.world/membership/#apply" style="display:inline-block;background:#0c202d;color:#f6e2ae;text-decoration:none;font-size:14px;font-weight:bold;padding:16px 24px;border-radius:28px;">Open TCSO registration &rarr;</a><p style="font-size:12px;line-height:1.8;color:#617168;margin:22px 0 0;">Enter this code only at <strong>tcso.world</strong>. Never share it in Messenger. Verification does not enroll you or charge a fee. If you did not request it, simply ignore this email.</p></td></tr>
+<tr><td style="padding:32px 30px 12px;"><p style="margin:0 0 14px;font-size:11px;font-weight:bold;letter-spacing:2px;color:#85662f;">YOUR COMMUNITY STARTS HERE</p><h1 style="margin:0 0 16px;font-family:Georgia,serif;font-size:32px;line-height:1.25;color:#0c202d;">One small step.<br>A shared future.</h1><p style="margin:0;font-size:16px;line-height:1.8;">Use this code in your TCSO application to verify your email.</p><p lang="my" style="margin:8px 0 18px;font-size:14px;line-height:1.9;">အီးမေးလ်အတည်ပြုရန် အောက်ပါကုဒ်ကို ဖွင့်ထားသော TCSO လျှောက်လွှာတွင် ထည့်ပါ။</p></td></tr>
+<tr><td style="padding:0 30px 24px;"><table role="presentation" width="100%" cellspacing="0" cellpadding="0" style="background:#f5e7bd;border:1px solid #d6b771;border-radius:12px;"><tr><td align="center" style="padding:24px 8px;"><p style="margin:0 0 10px;font-size:11px;letter-spacing:2px;color:#624b22;">YOUR VERIFICATION CODE</p><div style="font-family:Consolas,Monaco,monospace;font-size:36px;letter-spacing:6px;font-weight:bold;color:#0c202d;white-space:nowrap;">{code}</div><p style="margin:12px 0 0;font-size:13px;color:#624b22;">Valid for 10 minutes · Select code to copy</p></td></tr></table></td></tr>
+<tr><td style="padding:0 30px 28px;"><p style="font-size:14px;line-height:1.8;margin:0 0 16px;"><strong>1.</strong> Open the verification link or return to your application.<br><strong>2.</strong> Enter the six digits and select Verify code.<br><strong>3.</strong> Review your details, submit, then continue in Messenger.</p><p style="font-size:13px;line-height:1.8;margin:0 0 20px;">You can continue in a new tab or on another device. Open the secure registration link below, then enter this code.</p><a href="{resume_url}" style="display:inline-block;background:#0c202d;color:#f6e2ae;text-decoration:none;font-size:14px;font-weight:bold;padding:16px 24px;border-radius:28px;">Continue verification &rarr;</a><p style="font-size:12px;line-height:1.8;color:#617168;margin:22px 0 0;">Enter this code only at <strong>tcso.world</strong>. Never share it in Messenger. Verification does not enroll you or charge a fee. If you did not request it, simply ignore this email.</p></td></tr>
 <tr><td style="padding:22px 30px;background:#eaf0e8;border-top:1px solid #dce2d6;"><p style="font-family:Georgia,serif;font-size:17px;color:#244837;margin:0 0 10px;">Bridging borders. Building futures. Together.</p><p style="font-size:12px;line-height:1.8;margin:0;color:#536558;">TCSO membership verification · This address sends automated emails.<br>Need help? <a href="https://m.me/TCSODL" style="color:#244837;">Contact TCSO on Messenger</a> · <a href="https://tcso.world" style="color:#244837;">Visit our website</a></p></td></tr>
 </table></td></tr></table></body></html>'''
 
-def send_code(email, code):
+def send_code(email, code, challenge=None):
     user=os.environ.get('SMTP_USERNAME',''); password=os.environ.get('SMTP_PASSWORD','')
     if not user or not password: raise VerificationError(503,'Email verification is temporarily unavailable. Please try again later.')
+    resume_url = "https://tcso.world/membership/#" + urlencode({"verify":challenge,"email":email}) if challenge else "https://tcso.world/membership/#apply"
     msg=EmailMessage()
     msg['Subject']='Your TCSO verification code'
     msg['From']=os.environ.get('SMTP_FROM','TCSO Membership <register@tcso.world>')
     msg['To']=email
-    msg.set_content(f'Your TCSO membership verification code is: {code}\n\nThis code expires in 10 minutes. Enter it only at https://tcso.world/membership/. Never share this code.\n\nVerifying your email does not enroll you or charge a membership fee. If you did not request this code, ignore this email.\n\nTCSO — Third-Country Supporters Organization\nhttps://tcso.world')
-    msg.add_alternative(render_code_html(code), subtype='html')
+    msg.set_content(f'Your TCSO membership verification code is: {code}\n\nThis code expires in 10 minutes. Enter it only at https://tcso.world/membership/. Never share this code.\nContinue in any tab: {resume_url}\n\nVerifying your email does not enroll you or charge a membership fee. If you did not request this code, ignore this email.\n\nTCSO — Third-Country Supporters Organization\nhttps://tcso.world')
+    msg.add_alternative(render_code_html(code, resume_url), subtype='html')
     with smtplib.SMTP(os.environ.get('SMTP_HOST','smtp-relay.brevo.com'),int(os.environ.get('SMTP_PORT','587')),timeout=12) as smtp:
         smtp.ehlo(); smtp.starttls(context=ssl.create_default_context()); smtp.ehlo()
         smtp.login(user,password); smtp.send_message(msg)
@@ -68,7 +72,7 @@ def request_code(database,data,client):
         if (recent[0] and recent[0]>now-60) or recent[1]>=5 or total>=200:
             raise VerificationError(429,'Please wait before requesting another code. You can request up to 5 codes per hour.')
         db.execute('INSERT INTO email_codes (id,email,digest,salt,created,client) VALUES (?,?,?,?,?,?)',(challenge,email,digest,salt,now,client))
-    try: send_code(email,code)
+    try: send_code(email,code,challenge)
     except (smtplib.SMTPException,OSError):
         raise VerificationError(503,'We could not send your code. Please wait a minute and try again.') from None
     with database() as db:

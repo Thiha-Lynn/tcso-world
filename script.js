@@ -136,6 +136,19 @@ if (membershipForm) {
         }
     });
 
+    // Email links carry only the challenge identifier and address; a valid code is still required.
+    const resume = new URLSearchParams(location.hash.slice(1));
+    if (/^[0-9a-f-]{36}$/.test(resume.get('verify') || '') && resume.get('email')) {
+        emailInput.value = resume.get('email'); challenge = resume.get('verify');
+        otpEntry.hidden = false;
+        emailStatus.textContent = 'Continue verification: enter the six-digit code from your email. Then fill in your application details.';
+        history.replaceState(null, '', location.pathname + location.search + '#apply');
+        setTimeout(() => { codeInput.focus(); }, 0);
+    }
+    codeInput.addEventListener('input', () => { codeInput.value = codeInput.value.replace(/\D/g, '').slice(0, 6); });
+    codeInput.addEventListener('focus', () => codeInput.select());
+    message.addEventListener('click', () => message.select());
+
     const selectedPlan = () => membershipForm.querySelector('[name="plan"]:checked').value;
     const updatePlan = () => {
         const paid = selectedPlan() === 'paid';
@@ -234,10 +247,10 @@ if (membershipForm) {
             submitted = true;
             message.value = `TCSO application reference: ${data.reference}\nSaved online; following up in Messenger.\n\n${message.value}`;
             message.style.height = `${message.scrollHeight + 4}px`;
-            submitStatus.textContent = `Application received. Reference: ${data.reference}. This is not membership approval. Copy your message and send it to TCSO in Messenger for the next steps.`;
+            submitStatus.textContent = `Application received. Reference: ${data.reference}. Messenger follow-up is required before TCSO reviews and activates your membership. Copy your message and send it to TCSO in Messenger for the next steps.`;
             submitButton.textContent = 'Application received ✓';
-            document.querySelector('#messenger-kicker').textContent = 'Application saved · Next step';
-            document.querySelector('#messenger-next-title').textContent = 'Send your reference to TCSO';
+            document.querySelector('#messenger-kicker').textContent = 'Application saved · Required final step';
+            document.querySelector('#messenger-next-title').textContent = 'Required: send your reference to TCSO';
             document.querySelector('#messenger-next-description').textContent = `Your application ${data.reference} is safely saved. The message above now includes your reference and details. Send it in Messenger to discuss membership and activation with TCSO.`;
             const nextStep = document.querySelector('#messenger-next');
             nextStep.classList.add('is-saved');

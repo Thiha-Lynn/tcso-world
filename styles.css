@@ -716,3 +716,7 @@ button:disabled { opacity: .65; cursor: wait; }
 .next-step-kicker { text-transform:uppercase; letter-spacing:.1em; font-weight:750; color:#52673d; font-size:.7rem !important; margin:0; }
 .messenger-next .application-result-actions { display:flex; flex-direction:row; flex-wrap:wrap; gap:.7rem; }
 .messenger-next .button { flex:1 1 200px; }
+
+.duration-badge { display:block; width:fit-content; background:#e7eddf; color:#234635; border-radius:6px; padding:.3rem .6rem; margin:.15rem 0 .6rem; font-size:.85rem; }
+.offer-story { max-width:880px; margin:0 auto 2rem; padding:1.5rem; background:#fffaf0; border:1px solid #d6bf83; border-radius:14px; color:#254334; line-height:1.9; }
+.offer-story h3 { margin:0; font-size:1.5rem; line-height:1.4; }
