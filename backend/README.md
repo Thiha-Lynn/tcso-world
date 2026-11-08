@@ -39,3 +39,12 @@ Sender: `TCSO Membership <register@tcso.world>`. This is an outbound sender, not
 Tests mock SMTP and cover OTP expiry, attempt limits, email binding, token replay and required server-side verification. No real email is sent by the test suite.
 
 OTP messages include an inline-styled HTML theme and a plain-text alternative. The registration link includes the challenge ID and email in its URL fragment to resume verification in another tab/device. No OTP or verification token is embedded. The browser removes that fragment after reading it. Applicants still enter the code; other application fields must be entered in the new tab. The Messenger handoff copies the reviewed message, including its saved reference, and opens the Page chat. It cannot prefill or send a visitor message through a standard m.me URL. No additional AWS compute resource is provisioned; the service shares the existing Myo Taw host and its resource/bandwidth allowance.
+
+
+## Messenger assistant (Meta app 1649260566638800)
+
+Separate systemd unit `tcso-messenger`, port 8767, `/tcso-api/messenger`, Page 1225161934021706 only. Root-only `/etc/tcso-messenger.env` contains META_PAGE_ID, META_PAGE_TOKEN, META_APP_SECRET, META_VERIFY_TOKEN and DEEPSEEK_API_KEY. Never commit values. Incoming requests require HMAC SHA256 signature; challenge uses constant-time token comparison. SQLite deduplicates message IDs; message text clears after processing. Failed sends are not retried automatically to avoid duplicates. Inspect failed counts privately; restarting after a crash can leave processing events for manual review. Records expire after two days, preferences after 30 days.
+
+AI requires the visitor to type AI. HUMAN/STOP pause responses; application references route to staff without querying AI. Staff must monitor the Page inbox; this service has no separate staff notification. AI max 400 output tokens, max 20 incoming messages/person/day and 200 completed events/day. Costs apply to DeepSeek use; these are count limits, not a dollar budget. The service does not query membership DB, approve memberships or issue payment instructions. Standard response window is limited to 23 hours.
+
+Meta public access remains subject to app publishing and review. Verify an administrator conversation and public-access permissions before describing this as available to all visitors. Privacy/deletion page: https://tcso.world/privacy/.

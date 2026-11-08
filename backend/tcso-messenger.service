@@ -1,0 +1,18 @@
+[Unit]
+Description=TCSO Messenger assistant
+After=network.target
+[Service]
+User=tcso-intake
+Group=tcso-intake
+EnvironmentFile=/etc/tcso-messenger.env
+ExecStart=/usr/bin/python3 /opt/tcso-intake/messenger.py
+Restart=on-failure
+UMask=0077
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectHome=true
+ProtectSystem=strict
+ReadWritePaths=/var/lib/tcso-intake
+MemoryMax=128M
+[Install]
+WantedBy=multi-user.target
