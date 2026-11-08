@@ -23,7 +23,7 @@ Application references must not be invented or represented as approved. The assi
 
 ## Data handling
 
-Webhook payloads are validated with the Meta app-secret HMAC. Message IDs are deduplicated in private SQLite. Message text clears after processing; queue metadata expires after two days. Page-scoped identifiers and AI/human preference expire after 30 days. DeepSeek receives only the current question, with basic email/long-number redaction, not Page tokens or application database contents. No conversation-history memory is forwarded. Secrets are root-only environment files outside the repository. Staff monitor the Page inbox. Provider retention is governed by provider policies.
+Webhook payloads are validated with the Meta app-secret HMAC. Message IDs are deduplicated in private SQLite. Message text clears after processing; queue metadata expires after two days. Page-scoped identifiers and AI/human preference expire after 30 days. DeepSeek receives only the current question, with basic email/long-number redaction, not Page tokens or application database contents. Up to six recent redacted question/answer pairs from the same sender are forwarded for context and expire within 24 hours. RESET/FORGET and human handoff clear this memory. Paused messages are not stored in memory. Secrets are root-only environment files outside the repository. Staff monitor the Page inbox. Provider retention is governed by provider policies.
 
 ## Current status
 
