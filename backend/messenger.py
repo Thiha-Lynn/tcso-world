@@ -31,7 +31,7 @@ def registration_card():
   'subtitle':'Free US$0 or Community US$30 one-time. Explore benefits and apply.',
   'image_url':CARD_IMAGE,
   'default_action':{'type':'web_url','url':REGISTRATION_URL},
-  'buttons':[{'type':'web_url','url':REGISTRATION_URL+'#apply','title':'Apply for membership'},
+  'buttons':[{'type':'web_url','url':REGISTRATION_URL+'#apply','title':'Apply now'},
              {'type':'web_url','url':REGISTRATION_URL+'#plans-title','title':'Compare benefits'}]
  }]}}}
 
