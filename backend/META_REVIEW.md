@@ -6,24 +6,24 @@ Privacy and deletion instructions: https://tcso.world/privacy/
 
 ## Purpose and requested permission
 
-TCSO uses pages_messaging to receive questions initiated by visitors to its own Page and respond with membership registration guidance. The app offers an automated greeting, optional DeepSeek FAQ responses after the visitor types AI, and human handoff when the visitor types HUMAN, STOP, ADMIN or sends an application reference. It does not send unsolicited marketing messages, process payments or approve membership. Only the TCSO Page has a webhook subscription.
+TCSO uses pages_messaging to receive questions initiated by visitors to its own Page and respond with membership registration guidance. The app offers an automated greeting, direct DeepSeek FAQ responses after the welcome disclosure, and human handoff when the visitor types HUMAN, STOP, ADMIN or sends an application reference. It does not send unsolicited marketing messages, process payments or approve membership. Only the TCSO Page has a webhook subscription.
 
 ## Reviewer walkthrough
 
 1. Open https://m.me/TCSODL with a reviewer account permitted by Meta to test the app.
 2. Send Hello. Observe the automated greeting and disclosure of the AI provider.
-3. Send AI. Observe confirmation of optional AI processing and HUMAN command.
+3. Ask a membership question directly. No AI keyword is needed; Talk to team pauses replies and Resume help restarts them.
 4. Ask: Is the US$30 fee monthly? Observe the one-time fee explanation.
 5. Ask for help registering. Observe the tcso.world/membership/ link and registration card and email verification / application / Messenger reference steps.
 6. Send HUMAN. Observe the human-handoff acknowledgement.
 7. Send another question. Observe that automated replies stay paused.
-8. Send AI to opt in again if needed.
+8. Tap Resume help to restart if needed.
 
 Application references must not be invented or represented as approved. The assistant acknowledges receipt of reference text and asks staff to review it; it does not look up applicant records.
 
 ## Data handling
 
-Webhook payloads are validated with the Meta app-secret HMAC. Message IDs are deduplicated in private SQLite. Message text clears after processing; queue metadata expires after two days. Page-scoped identifiers and AI/human preference expire after 30 days. DeepSeek receives only the current opt-in question, with basic email/long-number redaction, not Page tokens or application database contents. No conversation-history memory is forwarded. Secrets are root-only environment files outside the repository. Staff monitor the Page inbox. Provider retention is governed by provider policies.
+Webhook payloads are validated with the Meta app-secret HMAC. Message IDs are deduplicated in private SQLite. Message text clears after processing; queue metadata expires after two days. Page-scoped identifiers and AI/human preference expire after 30 days. DeepSeek receives only the current question, with basic email/long-number redaction, not Page tokens or application database contents. No conversation-history memory is forwarded. Secrets are root-only environment files outside the repository. Staff monitor the Page inbox. Provider retention is governed by provider policies.
 
 ## Current status
 

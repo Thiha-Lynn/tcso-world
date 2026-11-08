@@ -7,8 +7,6 @@ class MessengerTests(unittest.TestCase):
  def tearDown(self): messenger.DB=self.old;self.temp.cleanup()
  def test_opt_in_and_human_handoff(self):
   with patch.object(messenger,'api') as api:
-   self.assertIn('Type AI',messenger.answer('123','hello'))
-   api.assert_not_called()
    self.assertIn('enabled',messenger.answer('123','AI'))
    self.assertIn('paused',messenger.answer('123','HUMAN'))
    self.assertIsNone(messenger.answer('123','hello'))
@@ -39,3 +37,19 @@ class MessengerTests(unittest.TestCase):
   with patch.dict(os.environ,{'META_PAGE_TOKEN':'test'}),patch.object(messenger,'api') as api:
    messenger.reply('123','US$30 is one-time, not monthly.')
    self.assertEqual(api.call_count,1)
+
+ def test_first_question_answers_without_keyword(self):
+  with patch.dict(os.environ,{'DEEPSEEK_API_KEY':'test'}),patch.object(messenger,'reply') as welcome,patch.object(messenger,'api',return_value={'choices':[{'message':{'content':'US$30 one-time'}}]}):
+   self.assertEqual(messenger.answer('new','How much?'),'US$30 one-time')
+   welcome.assert_called_once_with('new',messenger.WELCOME)
+   messenger.answer('new','Benefits?')
+   self.assertEqual(welcome.call_count,1)
+ def test_button_handoff_and_resume(self):
+  self.assertIn('paused',messenger.answer('new','Talk to team'))
+  self.assertIsNone(messenger.answer('new','price'))
+  self.assertIn('enabled',messenger.answer('new','RESUME'))
+ def test_quick_reply_matches_mode(self):
+  messenger.answer('new','HUMAN')
+  with patch.dict(os.environ,{'META_PAGE_TOKEN':'test'}),patch.object(messenger,'api') as api:
+   messenger.reply('new','Waiting for staff')
+   self.assertEqual(api.call_args.args[1]['message']['quick_replies'][0]['payload'],'RESUME')
