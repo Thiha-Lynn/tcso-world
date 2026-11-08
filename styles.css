@@ -707,3 +707,12 @@ button:disabled { opacity: .65; cursor: wait; }
  .otp-controls { grid-template-columns: 1fr; }
  .email-verification { padding: 1rem; }
 }
+
+.messenger-next { padding:1.25rem; margin:1.5rem 0 0; border:1px solid #d6c596; border-radius:14px; background:#f8f0da; scroll-margin-top:110px; }
+.messenger-next.is-saved { border:2px solid #54755d; background:#edf3e9; }
+.messenger-next h3 { margin:.35rem 0 .75rem; font-size:1.45rem; line-height:1.35; color:#17392c; }
+.messenger-next p, .messenger-next li { font-size:.9rem; line-height:1.8; }
+.messenger-next ol { padding-left:1.2rem; margin:1rem 0 1.25rem; }
+.next-step-kicker { text-transform:uppercase; letter-spacing:.1em; font-weight:750; color:#52673d; font-size:.7rem !important; margin:0; }
+.messenger-next .application-result-actions { display:flex; flex-wrap:wrap; gap:.7rem; }
+.messenger-next .button { flex:1 1 200px; }

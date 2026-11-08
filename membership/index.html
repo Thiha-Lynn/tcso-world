@@ -24,8 +24,8 @@
     <meta name="twitter:title" content="TCSO Membership Is Open">
     <meta name="twitter:description" content="Join a Myanmar diaspora community for connection, learning and shared support.">
     <meta name="twitter:image" content="https://tcso.world/assets/tcso-membership-social-card.jpg">
-    <link rel="stylesheet" href="/styles.css?v=20261108-otp-v5">
-    <script src="/script.js?v=20261108-otp-v5" defer></script>
+    <link rel="stylesheet" href="/styles.css?v=20261108-mail-v6">
+    <script src="/script.js?v=20261108-mail-v6" defer></script>
 <noscript><style>.header-inner{flex-wrap:wrap;padding-block:1rem}.nav-toggle{display:none}.primary-nav{position:static;display:flex;flex-wrap:wrap;width:100%;box-shadow:none}#membership-form{display:none}</style></noscript>
 </head>
 <body class="membership-page">
@@ -235,12 +235,17 @@
                         <label class="consent-label"><input type="checkbox" id="submission-consent"> I agree to send these details to TCSO’s AWS intake service for membership review, as described above.</label>
                         <button class="button button--gold" type="button" id="submit-application">Submit application to TCSO</button>
                         <p id="submission-status" role="status"></p>
-                        <p class="send-steps">You can also send this application directly in Messenger. Paste the copied message and tap Send.</p>
+                        <section class="messenger-next" id="messenger-next" aria-labelledby="messenger-next-title">
+                        <p class="next-step-kicker" id="messenger-kicker">Messenger follow-up</p>
+                        <h3 id="messenger-next-title">Continue with TCSO</h3>
+                        <p id="messenger-next-description">Your message is prepared above. You can copy it to contact TCSO in Messenger.</p>
+                        <ol><li>Copy your prepared message and open the TCSO chat.</li><li>Paste the message into Messenger.</li><li>Tap <strong>Send</strong> so the TCSO team can reply.</li></ol>
                         <div class="application-result-actions">
-                            <button class="button button--ink" type="button" id="copy-and-open">Copy &amp; open Messenger <span aria-hidden="true">↗</span></button>
+                            <button class="button button--ink" type="button" id="copy-and-open">Copy message &amp; open Messenger <span aria-hidden="true">↗</span></button>
                             <button class="button button--outline-ink" type="button" id="copy-application">Copy only</button>
                             <a class="text-link text-link--dark" href="https://m.me/TCSODL" target="_blank" rel="noopener noreferrer">Open Messenger manually <span aria-hidden="true">↗</span></a>
                         </div>
+                        </section>
                         <p class="copy-status" id="copy-status" role="status"></p>
                         <p class="send-steps" lang="my">Messenger ဖွင့်ပြီးနောက် စာတိုကို paste လုပ်ကာ Send နှိပ်ပေးပါ။ မပို့မီ အချက်အလက်များကို စစ်ဆေးနိုင်ပါသည်။</p>
                         <p class="send-steps">Opening Messenger does not send a message automatically. Paste the copied text and tap Send. If you submitted online, include your reference so TCSO can match your application.</p>

@@ -147,6 +147,10 @@ if (membershipForm) {
     };
     const invalidate = () => {
         result.hidden = true;
+        document.querySelector('#messenger-kicker').textContent = 'Messenger follow-up';
+        document.querySelector('#messenger-next-title').textContent = 'Continue with TCSO';
+        document.querySelector('#messenger-next-description').textContent = 'Your message is prepared above. You can copy it to contact TCSO in Messenger.';
+        document.querySelector('#messenger-next').classList.remove('is-saved');
         payload = null;
         submitted = false;
         consent.checked = false;
@@ -232,9 +236,16 @@ if (membershipForm) {
             message.style.height = `${message.scrollHeight + 4}px`;
             submitStatus.textContent = `Application received. Reference: ${data.reference}. This is not membership approval. Copy your message and send it to TCSO in Messenger for the next steps.`;
             submitButton.textContent = 'Application received ✓';
+            document.querySelector('#messenger-kicker').textContent = 'Application saved · Next step';
+            document.querySelector('#messenger-next-title').textContent = 'Send your reference to TCSO';
+            document.querySelector('#messenger-next-description').textContent = `Your application ${data.reference} is safely saved. The message above now includes your reference and details. Send it in Messenger to discuss membership and activation with TCSO.`;
+            const nextStep = document.querySelector('#messenger-next');
+            nextStep.classList.add('is-saved');
+            nextStep.scrollIntoView({behavior:'smooth', block:'center'});
+            document.querySelector('#copy-and-open').focus({preventScroll:true});
         } catch (error) {
             submitStatus.classList.add('is-error');
-            submitStatus.textContent = `We could not confirm submission. ${error.name === 'TimeoutError' ? 'The connection timed out.' : 'Please try again.'} Retrying uses the same reference request to avoid duplicates. You can also copy your application and send it through Messenger.`;
+            submitStatus.textContent = `We could not confirm submission. ${error.name === 'TimeoutError' ? 'The connection timed out.' : error.message} Retrying uses the same reference request to avoid duplicates. You can also copy your application and send it through Messenger.`;
             submitButton.disabled = false;
         } finally {
             submitting = false;
