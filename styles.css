@@ -670,3 +670,40 @@ button:disabled { opacity: .65; cursor: wait; }
  .plan-description { min-height: 3.4em; }
 }
 #application-result { scroll-margin-top: 110px; }
+/* Searchable countries, email verification and complete mobile comparisons. */
+.partner-detail-list { list-style: none; padding: 0 !important; }
+.partner-detail-list li { display: grid; gap: .35rem; padding: .85rem 0; border-bottom: 1px solid #dfd7c3; }
+.partner-detail-list li:last-child { border-bottom: 0; }
+.partner-detail-list strong { color: #203b30; font-size: 1rem; }
+.partner-detail-list span { color: #344d41; }
+.partner-detail-list small, .partner-terms, .partner-intro { color: #536357; font-size: .8rem; line-height: 1.75; }
+.paid-value-highlight p { margin: .6rem 0; }
+.country-picker { position: relative; }
+#country-options { position: absolute; z-index: 20; left: 0; right: 0; top: 100%; max-height: 260px; overflow-y: auto; margin: .25rem 0; padding: .3rem; list-style: none; background: white; border: 1px solid #a0b3a7; border-radius: .5rem; box-shadow: 0 10px 25px #102b3826; }
+#country-options li { padding: .85rem; min-height: 44px; cursor: pointer; color: #1b332b; }
+#country-options li:hover, #country-options li[aria-selected="true"] { background: #f5e9c9; border-radius: .3rem; }
+.field-hint { font-size: .8rem; line-height: 1.65; color: #536558; margin: .2rem 0 .7rem; }
+.email-verification { padding: 1.2rem; border: 1px solid #d9d2bd; border-radius: .7rem; background: #f7f5ee; margin: .7rem 0; display: grid; gap: .75rem; }
+.email-verification h3 { margin: 0; font-size: 1.1rem; }
+.email-verification p { margin: 0; font-size: .85rem; line-height: 1.75; }
+.email-verification label { font-size: .9rem; font-weight: 650; }
+.email-verification label small { display: block; font-weight: 400; line-height: 1.8; }
+.email-consent { display: flex; gap: .65rem; align-items: flex-start; font-weight: 400 !important; line-height: 1.7; }
+#membership-form .email-consent input { padding: 0; min-height: 19px; width: 19px; margin: .2rem 0 0; }
+.otp-controls { display: grid; grid-template-columns: minmax(0,1fr) auto; gap: .6rem; margin-top: .5rem; }
+#email-code { letter-spacing: .3em; font-size: 1.25rem !important; }
+#email-status { overflow-wrap: anywhere; }
+#email-status.is-verified { color: #1f6340; font-weight: 700; }
+.application-result textarea { overflow: hidden; min-height: 280px; line-height: 1.85; }
+@media (max-width: 760px) {
+ .value-table, .value-table tbody, .value-table tfoot, .value-table tr, .value-table td, .value-table th { display: block; min-width: 0; width: 100%; }
+ .value-table thead { display: none; }
+ .value-table tr { padding: .65rem; border-bottom: 2px solid #d6ceba; }
+ .value-table th[scope="row"] { font-size: 1rem; padding: .65rem; border: 0; }
+ .value-table td { display: grid; grid-template-columns: minmax(0,.9fr) minmax(0,1.1fr); gap: .5rem; font-size: .85rem; border: 0; padding: .55rem .65rem; }
+ .value-table td::before { content: attr(data-label); font-weight: 650; color: #4e6356; }
+ .value-table td strong { white-space: normal; }
+ .value-table-wrap { overflow: visible; }
+ .otp-controls { grid-template-columns: 1fr; }
+ .email-verification { padding: 1rem; }
+}

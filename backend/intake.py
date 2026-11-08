@@ -8,6 +8,7 @@ import time
 import uuid
 from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
 from pathlib import Path
+import email_verification as verification
 
 STATE = Path(os.environ.get('TCSO_STATE', '/var/lib/tcso-intake'))
 ORIGINS = {'https://tcso.world', 'https://www.tcso.world', 'https://thiha-lynn.github.io'}
@@ -46,7 +47,7 @@ class Handler(BaseHTTPRequestHandler):
         self.respond(405, {'error': 'Use the membership form to submit an application.'})
 
     def do_POST(self):
-        if self.path != '/tcso-api/applications':
+        if self.path not in ('/tcso-api/applications', '/tcso-api/otp/request', '/tcso-api/otp/verify'):
             return self.respond(404)
         if self.headers.get('Origin') not in ORIGINS:
             return self.respond(403, {'error': 'Unrecognized application origin.'})
@@ -60,6 +61,11 @@ class Handler(BaseHTTPRequestHandler):
             data = json.loads(self.rfile.read(size))
             if not isinstance(data, dict):
                 raise ValueError()
+            client = hashlib.sha256((self.headers.get('X-Real-IP', self.client_address[0]) + time.strftime('%Y-%m-%d', time.gmtime())).encode()).hexdigest()
+            if self.path == '/tcso-api/otp/request':
+                return self.respond(200, verification.request_code(database, data, client))
+            if self.path == '/tcso-api/otp/verify':
+                return self.respond(200, verification.verify_code(database, data))
             request_id = str(uuid.UUID(data.get('request_id', '')))
             if data.get('consent') is not True or data.get('website'):
                 raise ValueError()
@@ -71,11 +77,14 @@ class Handler(BaseHTTPRequestHandler):
                 clean[key] = value.strip()
             if not clean['name'] or not clean['country'] or data.get('plan') not in ('free', 'paid'):
                 raise ValueError()
-            if clean['contact'] and not re.fullmatch(r'[^\s@]+@[^\s@]+\.[^\s@]+', clean['contact']):
-                raise ValueError()
-            clean.update(plan=data['plan'], consent=True, privacy_version='2026-11-08', membership_fee_usd=30 if data['plan'] == 'paid' else 0, membership_billing='one-time')
+            clean['contact'] = verification.normalize_email(clean['contact'])
+            clean.update(plan=data['plan'], consent=True, privacy_version='2026-11-08-otp', email_verified=True, membership_fee_usd=30 if data['plan'] == 'paid' else 0, membership_billing='one-time')
             if clean['plan'] == 'free':
                 clean['currency'] = clean['payment_method'] = ''
+        except verification.VerificationError as error:
+            return self.respond(error.status, {'error':error.message})
+        except sqlite3.Error:
+            return self.respond(503, {'error':'Verification is temporarily unavailable.'})
         except (ValueError, TypeError, AttributeError, TimeoutError):
             return self.respond(422, {'error': 'Please check your name, country, email, plan and consent.'})
         try:
@@ -87,6 +96,7 @@ class Handler(BaseHTTPRequestHandler):
                 db.execute('BEGIN IMMEDIATE')
                 db.execute('DELETE FROM applications WHERE created < ?', (now - 90 * 86400,))
                 db.execute('DELETE FROM rate_limits WHERE created < ?', (now - 3600,))
+                verification_id = verification.authorize(db, clean['contact'], data.get('verification_token'), request_id)
                 existing = db.execute('SELECT reference, payload FROM applications WHERE request_id = ?', (request_id,)).fetchone()
                 if existing:
                     if existing[1] != encoded:
@@ -95,9 +105,12 @@ class Handler(BaseHTTPRequestHandler):
                 if db.execute('SELECT COUNT(*) FROM rate_limits WHERE client = ?', (client,)).fetchone()[0] >= 10:
                     return self.respond(429, {'error': 'Too many submissions. Please try later or use Messenger.'})
                 reference = 'TCSO-' + uuid.uuid4().hex[:16].upper()
+                db.execute('UPDATE email_codes SET used_request=? WHERE id=?', (request_id, verification_id))
                 db.execute('INSERT INTO applications VALUES (?, ?, ?, ?)', (request_id, reference, now, encoded))
                 db.execute('INSERT INTO rate_limits VALUES (?, ?)', (client, now))
             self.respond(201, {'reference': reference, 'status': 'received'})
+        except verification.VerificationError as error:
+            self.respond(error.status, {'error':error.message})
         except sqlite3.Error:
             self.respond(503, {'error': 'Intake is temporarily unavailable. Please use Messenger.'})
 

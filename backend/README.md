@@ -21,8 +21,19 @@ For a deletion request, an authorized operator should delete only the verified r
 
 ## Deployment and rollback
 
-Install `intake.py`, `maintenance.py` and `review.py` to `/opt/tcso-intake/`, the three units to `/etc/systemd/system/`, and `nginx-location.conf` as `/etc/nginx/snippets/tcso-intake.conf`. Include that snippet only in the existing myotaw.com TLS server. Validate `sudo nginx -t` before reload; restart the intake service after code updates. Existing Laravel routes remain unchanged. Nginx config backup: `/etc/nginx/sites-available/myotaw.before-tcso-20261108`.
+Install `intake.py`, `email_verification.py`, `maintenance.py` and `review.py` to `/opt/tcso-intake/`, the three units to `/etc/systemd/system/`, and `nginx-location.conf` as `/etc/nginx/snippets/tcso-intake.conf`. Include that snippet only in the existing myotaw.com TLS server. Validate `sudo nginx -t` before reload; restart the intake service after code updates. Existing Laravel routes remain unchanged. Nginx config backup: `/etc/nginx/sites-available/myotaw.before-tcso-20261108`.
 
 Rollback: remove only the TCSO include from the TLS server, validate/reload nginx, then stop the intake service and timer. Preserve the private database. Frontend Messenger fallback continues to work if intake is unavailable.
 
 Validation: `python3 -m unittest discover -s backend -v` exercises actual HTTP requests, valid submissions, retry deduplication, changed-payload conflicts, invalid input, consent, CORS, rate limits and retention using a temporary database.
+
+
+## Email verification
+
+POST `/tcso-api/otp/request` sends a six-digit code via Brevo; POST `/tcso-api/otp/verify` exchanges it for an email-bound token required by `/tcso-api/applications`. Codes expire after 10 minutes and five failed guesses. Tokens expire after 30 minutes and can submit one application (idempotent retries allowed). Codes/tokens are hashed at rest. Verification records are removed within 24 hours by daily maintenance (request-time cleanup also runs).
+
+Limits: one request per minute, five per hour per email or daily hashed IP, and 200 requests per rolling day for this service. Brevo's shared account quota also applies. SMTP uses STARTTLS on port 587. Secrets live only in root-owned mode-0600 `/etc/tcso-intake.env`, loaded by systemd; never commit them. Required variables: `SMTP_HOST`, `SMTP_PORT`, `SMTP_USERNAME`, `SMTP_PASSWORD`, `SMTP_FROM`.
+
+Sender: `TCSO Membership <register@tcso.world>`. This is an outbound sender, not a hosted inbox. TCSO has Brevo domain-verification TXT, two DKIM CNAMEs and monitoring DMARC. Myo Taw's existing Zoho mail remains separate. AWS IP 13.215.170.228 is authorized in Brevo; blocking unknown IPs remains enabled. The TCSO SMTP key expires 8 November 2027 and may expire after 90 days of inactivity; renew operationally before expiry.
+
+Tests mock SMTP and cover OTP expiry, attempt limits, email binding, token replay and required server-side verification. No real email is sent by the test suite.
