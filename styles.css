@@ -714,5 +714,5 @@ button:disabled { opacity: .65; cursor: wait; }
 .messenger-next p, .messenger-next li { font-size:.9rem; line-height:1.8; }
 .messenger-next ol { padding-left:1.2rem; margin:1rem 0 1.25rem; }
 .next-step-kicker { text-transform:uppercase; letter-spacing:.1em; font-weight:750; color:#52673d; font-size:.7rem !important; margin:0; }
-.messenger-next .application-result-actions { display:flex; flex-wrap:wrap; gap:.7rem; }
+.messenger-next .application-result-actions { display:flex; flex-direction:row; flex-wrap:wrap; gap:.7rem; }
 .messenger-next .button { flex:1 1 200px; }
