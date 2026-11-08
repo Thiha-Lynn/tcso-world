@@ -14,7 +14,7 @@ TCSO uses pages_messaging to receive questions initiated by visitors to its own 
 2. Send Hello. Observe the automated greeting and disclosure of the AI provider.
 3. Send AI. Observe confirmation of optional AI processing and HUMAN command.
 4. Ask: Is the US$30 fee monthly? Observe the one-time fee explanation.
-5. Ask for help registering. Observe the tcso.world/membership/ link and email verification / application / Messenger reference steps.
+5. Ask for help registering. Observe the tcso.world/membership/ link and registration card and email verification / application / Messenger reference steps.
 6. Send HUMAN. Observe the human-handoff acknowledgement.
 7. Send another question. Observe that automated replies stay paused.
 8. Send AI to opt in again if needed.
@@ -27,4 +27,4 @@ Webhook payloads are validated with the Meta app-secret HMAC. Message IDs are de
 
 ## Current status
 
-Published November 8, 2026. Administrator conversation confirmed three successful replies. Public non-role account access is not yet verified. Meta currently labels pages_messaging Ready for testing. Adding it to App Review presents an irreversible Tech Provider registration requirement, then business verification and review. Do not claim advanced access or completed review until Meta confirms it. Legal business ownership and data-handling attestations must come from the account owner. No screencast or review submission has been submitted yet.
+Published November 8, 2026. The owner confirmed a successful non-role Facebook account reply test. Server checks recorded 11 processed events from three distinct senders with no failed events. Meta currently labels pages_messaging Ready for testing. Adding it to App Review presents an irreversible Tech Provider registration requirement, then business verification and review. Do not claim advanced access or completed review until Meta confirms it. Legal business ownership and data-handling attestations must come from the account owner. No screencast or review submission has been submitted yet.
