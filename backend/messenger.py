@@ -1,5 +1,5 @@
 """TCSO Messenger webhook: signed, queued, opt-in AI and human handoff."""
-import hashlib,hmac,json,os,re,secrets,sqlite3,threading,time,urllib.request,urllib.parse
+import hashlib,hmac,json,os,re,logging,sqlite3,threading,time,urllib.request,urllib.parse
 from http.server import BaseHTTPRequestHandler,ThreadingHTTPServer
 DB='/var/lib/tcso-intake/messenger.sqlite3'
 PAGE=os.environ.get('META_PAGE_ID','')
@@ -52,7 +52,9 @@ def worker():
       response=answer(row[1],row[2])
       if response:reply(row[1],response)
      state='done'
-    except Exception:state='failed' # avoid duplicate replies on ambiguous transport failure
+    except Exception as error:
+     state='failed' # avoid duplicate replies on ambiguous transport failure
+     logging.error('Messenger processing failed: %s HTTP=%s',type(error).__name__,getattr(error,'code','n/a'))
     with db() as c:c.execute('UPDATE events SET state=?,text=? WHERE mid=?',(state,'',row[0]))
    else:time.sleep(1)
   except Exception:time.sleep(5)
@@ -82,7 +84,11 @@ class Handler(BaseHTTPRequestHandler):
      for event in entry.get('messaging',[]):
       msg=event.get('message',{});sender=str(event.get('sender',{}).get('id',''));text=msg.get('text','');mid=msg.get('mid','')
       if msg.get('is_echo') or not(sender.isdigit() and isinstance(text,str) and text and isinstance(mid,str) and mid):continue
-      c.execute('INSERT OR IGNORE INTO events VALUES (?,?,?,?,?)',(mid[:250],sender,text[:2000],int(time.time()),'pending'))
+      event_time=event.get('timestamp')
+      if not isinstance(event_time,(int,float)):continue
+      created=int(event_time/1000)
+      if not int(time.time())-23*3600 < created <= int(time.time())+300:continue
+      c.execute('INSERT OR IGNORE INTO events VALUES (?,?,?,?,?)',(mid[:250],sender,text[:2000],created,'pending'))
    self.respond(200,'EVENT_RECEIVED')
   except Exception:self.respond(400)
 if __name__=='__main__':
